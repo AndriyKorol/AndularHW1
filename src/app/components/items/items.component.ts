@@ -45,7 +45,7 @@ export class ItemsComponent implements OnInit {
   }
 
   deleteItem(item){
-    this.items.splice(item, 1);
+    this.items = this.items.filter(i => i !== item );
   }
 
 }
