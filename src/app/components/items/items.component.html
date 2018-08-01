@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6" *ngFor="let item of items">
+      <div class="card" [ngClass]="{'bg-success': item.id === 1}">
+        <h5 class="card-title mb-0">
+          {{ item.name }}
+        </h5>
+      </div>
+      <button type="button" class="btn btn-sm btn-dark float-right" (click)="deleteItem(item)">Delete</button>
+      <div class="card-body">
+        <h5 class="card-title" >{{item.price}}</h5>
+        <p class="card-text">{{ item.info }}</p>
+        <button type="button" class="btn btn-block" (click)="toggleReviews(item)" >
+          {{ item.reviewShow ? "Hide reviews" : "Show reviews" }}
+        </button>
+        <blockquote class="blockquote" *ngFor="let review of item.review" [hidden]="!item.reviewShow">
+          <p class="mb-0">{{ review.text }}</p>
+          <footer class="blockquote-footer"><cite title="Source Title">{{ review.name }}</cite></footer>
+        </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info" *ngIf="!items.length">Постів не знайдено!</div>
+  </div>
+
