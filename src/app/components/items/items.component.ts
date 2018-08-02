@@ -44,8 +44,8 @@ export class ItemsComponent implements OnInit {
     item.reviewShow = !item.reviewShow;
   }
 
-  deleteItem(item){
-    this.items = this.items.filter(i => i !== item );
+  deleteItem(index){
+    this.items.splice(index, 1);
   }
 
 }
